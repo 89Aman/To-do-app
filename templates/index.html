@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold text-center mb-6">To-Do List</h1>
+        <form action="/add" method="POST" class="flex justify-center mb-6">
+            <input type="text" name="task" placeholder="Add a new task" class="border rounded-l px-4 py-2 w-2/3">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-r">Add</button>
+        </form>
+        <ul class="max-w-lg mx-auto">
+            {% for task in tasks %}
+            <li class="flex justify-between items-center bg-white shadow-md p-4 mb-3 rounded">
+                <span class="{% if task.completed %}line-through text-gray-500{% endif %}">
+                    {{ loop.index }}. {{ task.task }}
+                </span>
+                <div>
+                    <a href="/complete/{{ loop.index0 }}" class="bg-green-500 text-white px-3 py-1 rounded mr-2">
+                        {% if task.completed %}Undo{% else %}Complete{% endif %}
+                    </a>
+                    <a href="/delete/{{ loop.index0 }}" class="bg-red-500 text-white px-3 py-1 rounded">
+                        Delete
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

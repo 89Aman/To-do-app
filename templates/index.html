@@ -21,10 +21,10 @@
                 </span>
                 <div>
                     <a href="/complete/{{ loop.index0 }}" class="bg-green-500 text-white px-3 py-1 rounded mr-2">
-                        {% if task.completed %}Undo{% else %}Complete{% endif %}
+                        {% if task.completed %}Undo{% else %}Done{% endif %}
                     </a>
                     <a href="/delete/{{ loop.index0 }}" class="bg-red-500 text-white px-3 py-1 rounded">
-                        Delete
+                        Clear
                     </a>
                 </div>
             </li>
